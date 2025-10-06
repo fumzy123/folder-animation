@@ -1,0 +1,74 @@
+---
+// Import Fonts
+import '@fontsource-variable/dm-sans';
+import '@fontsource/dm-mono';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Folder Animation</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --bg: #f4f7f0;
+    --fg: #0f0f0f;
+    --variant-1: #ffc640;
+    --variant-2: #d5d9d2;
+    --variant-3: #b0b3ad;
+    --disabled-folder-bg: #e8ebe4;
+    --disabled-folder-fg: #b0b3ad;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--bg);
+  }
+  h1 {
+    font-family: 'DM Sans Variable', sans-serif;
+    font-size: 2.75rem;
+    font-weight: 400;
+  }
+  p {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  h1,
+  p {
+    transition: color 250ms ease;
+    line-height: 1;
+    letter-spacing: -0.08em;
+  }
+  img {
+    /* Set image to fill the container */
+    max-width: 100%;
+    height: 100%;
+    display: block;
+
+    /* Maintain aspect ratio */
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+</style>
