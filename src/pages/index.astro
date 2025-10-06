@@ -1,11 +1,11 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../layouts/Layout.astro'
 
 // Import Images
-import jayce from '../images/jayce.jpeg';
-import victor from '../images/victor.jpeg';
-import jinx from '../images/jinx.jpeg';
-import vi from '../images/vi.jpeg';
+import jayce from '../images/jayce.jpeg'
+import victor from '../images/victor.jpeg'
+import jinx from '../images/jinx.jpeg'
+import vi from '../images/vi.jpeg'
 ---
 
 <Layout>
@@ -305,58 +305,58 @@ import vi from '../images/vi.jpeg';
 </style>
 
 <script>
-  import gsap from 'gsap';
+  import gsap from 'gsap'
 
   // Wait for DOM to be ready
   document.addEventListener('DOMContentLoaded', () => {
     // Get Folder and Folder Information Wrappers Elements
-    const folders = document.querySelectorAll('.folder');
-    const folderWrappers = document.querySelectorAll('.folder-wrapper');
+    const folders = document.querySelectorAll('.folder')
+    const folderWrappers = document.querySelectorAll('.folder-wrapper')
 
     // Check if the window is Mobile
-    let isMobile = window.innerWidth < 1000;
+    let isMobile = window.innerWidth < 1000
 
     // Set initial positions of the folder information wrapper block
     function setInitialPositions() {
-      gsap.set(folderWrappers, { y: isMobile ? 0 : 25 });
+      gsap.set(folderWrappers, { y: isMobile ? 0 : 25 })
     }
 
     // Set initial positions
-    setInitialPositions();
+    setInitialPositions()
 
     // Loop through each folder
     folders.forEach((folder, index) => {
       // Get preview images
-      const previewImages = folder.querySelectorAll('.folder-preview-img');
+      const previewImages = folder.querySelectorAll('.folder-preview-img')
 
       // When hovering over a folder
       folder.addEventListener('mouseenter', () => {
-        if (isMobile) return;
+        if (isMobile) return
 
         // Disable other folders
         folders.forEach((siblingFolder) => {
           if (siblingFolder !== folder) {
-            siblingFolder.classList.add('disabled');
+            siblingFolder.classList.add('disabled')
           }
-        });
+        })
 
         // Animate folder wrapper (information)
         gsap.to(folderWrappers[index], {
           y: 0,
           duration: 0.25,
           ease: 'back.out(1.7)',
-        });
+        })
 
         // Animate preview images
         previewImages.forEach((img, imgIndex) => {
-          let rotation;
+          let rotation
 
           if (imgIndex === 0) {
-            rotation = gsap.utils.random(-20, -10);
+            rotation = gsap.utils.random(-20, -10)
           } else if (imgIndex === 1) {
-            rotation = gsap.utils.random(-10, 10);
+            rotation = gsap.utils.random(-10, 10)
           } else {
-            rotation = gsap.utils.random(10, 20);
+            rotation = gsap.utils.random(10, 20)
           }
 
           // Actually animate the image
@@ -366,27 +366,27 @@ import vi from '../images/vi.jpeg';
             duration: 0.25,
             ease: 'back.out(1.7)',
             delay: imgIndex * 0.05,
-          });
-        });
+          })
+        })
 
-        console.log('Hovered on folder', index);
-      });
+        console.log('Hovered on folder', index)
+      })
 
       // When leaving a folder
       folder.addEventListener('mouseleave', () => {
-        if (isMobile) return;
+        if (isMobile) return
 
         // Re-enable all folders
         folders.forEach((siblingFolder) => {
-          siblingFolder.classList.remove('disabled');
-        });
+          siblingFolder.classList.remove('disabled')
+        })
 
         // Reset folder wrapper position
         gsap.to(folderWrappers[index], {
           y: 25,
           duration: 0.25,
           ease: 'back.out(1.7)',
-        });
+        })
 
         // Reset preview images
         previewImages.forEach((img, imgIndex) => {
@@ -396,11 +396,11 @@ import vi from '../images/vi.jpeg';
             duration: 0.25,
             ease: 'back.out(1.7)',
             delay: imgIndex * 0.05,
-          });
-        });
+          })
+        })
 
-        console.log('Left folder', index);
-      });
-    });
-  });
+        console.log('Left folder', index)
+      })
+    })
+  })
 </script>
